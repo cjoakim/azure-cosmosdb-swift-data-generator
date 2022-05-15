@@ -1,3 +1,15 @@
+# cj
+
+sourcedata/seanlahman/baseballdatabank-2022.2.zip
+sourcedata/seanlahman/baseballdatabank-2022.2/
+
+**/data/
+**/tmp/
+
+**/*.pyc
+**/*.zip
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
