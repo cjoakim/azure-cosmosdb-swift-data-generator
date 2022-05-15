@@ -201,6 +201,7 @@ def load_csv(csv_filename, doctype):
 
 def generate_mongoimport_scripts(uri, db, ssl_flag, script_type):
     mongoimport_files_list = FS.read_lines('mongoimport-files-list.txt')
+    print('{} lines read from file mongoimport-files-list.txt')
     generated_at = str(arrow.utcnow())
 
     for mongoimport_file in mongoimport_files_list:
@@ -212,8 +213,8 @@ def generate_mongoimport_scripts(uri, db, ssl_flag, script_type):
             script_file = 'mongoimport_{}.sh'.format(coll)
             shebang = '!/bin/bash'
 
-        # print('infile: {} -> collection: {} -> script: {}'.format(
-        #     mongoimport_file.strip(), coll, script_file))
+        print('infile: {} -> collection: {} -> script: {}'.format(
+            mongoimport_file.strip(), coll, script_file))
 
         t = Template.get_template('.', 'mongoimport.txt')
         values = dict()
@@ -244,6 +245,7 @@ def use_ssl(flag):
 
 if __name__ == "__main__":
 
+    #print(sys.argv)
     func = sys.argv[1].lower()
 
     if func == 'create_baseball_base_mongoexport_files':

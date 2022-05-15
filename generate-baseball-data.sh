@@ -4,7 +4,7 @@
 # Sean LahmanBaseball Databank files.
 # Chris Joakim, Microsoft, May 2022
 
-echo 'deleting outout files ...'
+echo 'deleting output files ...'
 rm data/*.json
 
 python main.py create_baseball_base_mongoexport_files

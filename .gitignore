@@ -3,6 +3,9 @@
 sourcedata/seanlahman/baseballdatabank-2022.2.zip
 sourcedata/seanlahman/baseballdatabank-2022.2/**/*.csv
 
+mongoimport_*.ps1 
+mongoimport_*.sh 
+
 **/data/*.json
 **/tmp/
 

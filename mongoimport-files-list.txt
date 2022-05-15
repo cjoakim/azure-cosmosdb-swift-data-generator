@@ -1,7 +1,3 @@
-
-.
-..
-.DS_Store
 baseball_contrib_AwardsManagers.json
 baseball_contrib_AwardsPlayers.json
 baseball_contrib_AwardsShareManagers.json

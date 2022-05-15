@@ -4,7 +4,7 @@ Data generator for **Project Swift**.
 
 ## Purpose
 
-Created simulated **mongoexport** files for loading into MongoDB for migration testing.
+Create simulated **mongoexport** files for loading into MongoDB for migration testing.
 
 ---
 
