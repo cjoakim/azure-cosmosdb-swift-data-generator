@@ -16,6 +16,7 @@ __version__ = "May 2022"
 
 import json
 import os
+import platform
 import random
 import sys
 import uuid
@@ -46,6 +47,8 @@ def print_options(msg):
 def create_baseball_base_mongoexport_files():
     faker = Faker()
     csv_files = read_baseball_csv_files_list()
+    windows = is_windows()
+
     for csv_filename in csv_files:
         rows = FS.read_csv(csv_filename.strip())
         doctype = filename_to_doctype(csv_filename)
@@ -71,7 +74,10 @@ def create_baseball_base_mongoexport_files():
                     doc['_asz'] = len(json.dumps(doc))  # _asz = approximate size
                     doc['_generated_at'] = str(arrow.utcnow())
                     out.write(json.dumps(doc, separators=(',', ':')))  # whitespace removed w/separators
-                    out.write(os.linesep)
+                    if windows:
+                        out.write("\r")
+                    else:
+                        out.write(os.linesep)
 
 def create_baseball_large_document_count_data(count):
     print('create_baseball_large_document_count_data: {}'.format(count))
@@ -209,9 +215,11 @@ def generate_mongoimport_scripts(uri, db, ssl_flag, script_type):
         if script_type == 'ps1':
             script_file = 'mongoimport_{}.ps1'.format(coll)
             shebang = ''
+            continuation_char = '`'
         else:
             script_file = 'mongoimport_{}.sh'.format(coll)
             shebang = '!/bin/bash'
+            continuation_char = '\\'
 
         print('infile: {} -> collection: {} -> script: {}'.format(
             mongoimport_file.strip(), coll, script_file))
@@ -219,6 +227,7 @@ def generate_mongoimport_scripts(uri, db, ssl_flag, script_type):
         t = Template.get_template('.', 'mongoimport.txt')
         values = dict()
         values['shebang'] = shebang
+        values['continuation_char'] = continuation_char
         values['generated_at'] = generated_at
         values['uri']  = uri
         values['db']   = db
@@ -235,12 +244,14 @@ def generate_mongoimport_scripts(uri, db, ssl_flag, script_type):
 
         FS.write(script_file, s)
 
-
-
 def use_ssl(flag):
     if flag == '--ssl':
         return True
     return False
+
+def is_windows():
+    plat = platform.system().lower()
+    return 'win' in plat
 
 
 if __name__ == "__main__":

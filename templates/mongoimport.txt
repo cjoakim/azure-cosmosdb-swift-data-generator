@@ -11,14 +11,14 @@
 echo ''
 echo 'executing mongoimport to collection: {{ coll }} in database: {{ db }} ...' 
 
-mongoimport \
-    --uri {{ uri }} \
-    --db {{ db }} \
-    --collection {{ coll }} \
-    --file {{ file }} \
-    --numInsertionWorkers {{ nworkers }} \
-    --batchSize {{ batch_size }} \
-    --mode {{ mode }} \
+mongoimport {{ continuation_char }}
+    --uri {{ uri }} {{ continuation_char }}
+    --db {{ db }} {{ continuation_char }}
+    --collection {{ coll }} {{ continuation_char }}
+    --file {{ file }} {{ continuation_char }}
+    --numInsertionWorkers {{ nworkers }} {{ continuation_char }}
+    --batchSize {{ batch_size }} {{ continuation_char }}
+    --mode {{ mode }} {{ continuation_char }}
     --writeConcern "{w:0}" {{ ssl_flag }}
 
 echo 'mongoimport completed' 
