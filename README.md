@@ -114,6 +114,46 @@ python main.py create_baseball_large_document_count_data 50000
 python main.py create_baseball_large_document_size_data 1000
 ```
 
+### Generate the mongoimport scripts
+
+This will generate PowerShell or Bash scripts which execute the **mongoimport**
+program to load the JSON files generated above to your target MongoDB database.
+
+#### On Windows
+
+```
+> .\generate-mongoimport-scripts.ps1
+```
+
+#### On Linux and macOS
+
+```
+$ ./generate-mongoimport-scripts.sh
+```
+
+**IMPORTANT NOTE:**
+
+You may have to modify the **generate-mongoimport-scripts** and/or the
+**templates/mongoimport.txt** so that the mongoimport program can connect
+to your database.
+
+
+---
+
+## How to Run MongoDB locally as a Docker Container in WSL
+
+See https://github.com/cjoakim/mongodb-docker.
+
+```
+$ git clone https://github.com/cjoakim/mongodb-docker
+$ cd reference_app
+$ cd mongo_docker
+$ ./compose.sh up      <-- starts the Docker container with docker-compose
+
+# Later, in another WSL Terminal in this same directory
+$ ./compose.sh down    <-- stops the Docker container
+```
+
 ---
 
 ## Sample Data 
