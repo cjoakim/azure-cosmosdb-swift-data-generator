@@ -12,6 +12,9 @@ echo ''
 echo 'executing mongoimport to collection: {{ coll }} in database: {{ db }} ...' 
 
 mongoimport {{ continuation_char }}
+    --authenticationDatabase admin {{ continuation_char }}
+    -u root {{ continuation_char }}
+    -p rootpassword {{ continuation_char }}
     --uri {{ uri }} {{ continuation_char }}
     --db {{ db }} {{ continuation_char }}
     --collection {{ coll }} {{ continuation_char }}
