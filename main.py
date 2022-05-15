@@ -1,6 +1,9 @@
 """
 Usage:
-  python main.py create_base_mongoexport_files
+    python main.py create_baseball_base_mongoexport_files
+    python main.py create_baseball_large_document_count_data 50000
+    python main.py create_baseball_large_document_size_data 1000
+    python main.py generate_mongoimport_scripts mongodb://127.0.0.1:27017 dev --nossl ps1
 Options:
   -h --help     Show this screen.
   --version     Show version.
@@ -49,7 +52,7 @@ def create_baseball_base_mongoexport_files():
         outfile = "data/baseball_{}.json".format(doctype)
 
         with open(outfile, "a") as out:
-            print('opened outfile: {}'.format(outfile))
+            print('creating outfile: {}'.format(outfile))
             header_row = None 
             for row_idx, row in enumerate(rows):
                 if row_idx == 0:

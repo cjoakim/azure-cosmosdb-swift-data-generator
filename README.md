@@ -36,8 +36,8 @@ The generated documents will each contain a "source_data_attribution" attribute,
 ### Clone this GitHub Repository
 
 ```
-> git clone https://github.com/cjoakim/azure-cosmosdb-swift-datagen.git
-> cd azure-cosmosdb-swift-datagen
+> git clone https://github.com/cjoakim/azure-cosmosdb-swift-data-generator.git
+> cd azure-cosmosdb-swift-data-generator
 ```
 
 ### Download the Public Datasets
@@ -45,11 +45,13 @@ The generated documents will each contain a "source_data_attribution" attribute,
 Download the above **2021 – comma-delimited version [Baseball Databank] zip file**
 to directory **sourcedata/seanlahman/** in this repo.  Then unzip the file.
 
+See file **seanlahman-baseballdatabank-files-list.txt** in this repo; after exploding
+the downloaded zip file these files should exist on your system.
+
 Confirm that file **sourcedata/seanlahman/baseballdatabank-2022.2/core/Batting.csv**
 is present relative to the GitHub repo root directory on your computer.  This will
 ensure that the csv files are in the correct location for the code in this repo.
-
-Directory sourcedata/seanlahman/baseballdatabank-2022.2/ is git-ignored in this project.
+You may have to copy the files up one directory.
 
 ### Setup and Activate the Python Virtual Environment
 
