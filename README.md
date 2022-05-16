@@ -114,6 +114,51 @@ python main.py create_baseball_large_document_count_data 50000
 python main.py create_baseball_large_document_size_data 1000
 ```
 
+### List of the Generated Files
+
+The above **generate-baseball-data** scripts produce this list of 30 files:
+
+```
+baseball_contrib_AwardsManagers.json
+baseball_contrib_AwardsPlayers.json
+baseball_contrib_AwardsShareManagers.json
+baseball_contrib_AwardsSharePlayers.json
+baseball_contrib_CollegePlaying.json
+baseball_contrib_HallOfFame.json
+baseball_contrib_Salaries.json
+baseball_contrib_Schools.json
+baseball_core_AllstarFull.json
+baseball_core_Appearances.json
+baseball_core_Batting.json
+baseball_core_BattingPost.json
+baseball_core_Fielding.json
+baseball_core_FieldingOF.json
+baseball_core_FieldingOFsplit.json
+baseball_core_FieldingPost.json
+baseball_core_HomeGames.json
+baseball_core_Managers.json
+baseball_core_ManagersHalf.json
+baseball_core_Parks.json
+baseball_core_People.json
+baseball_core_Pitching.json
+baseball_core_PitchingPost.json
+baseball_core_SeriesPost.json
+baseball_core_Teams.json
+baseball_core_TeamsFranchises.json
+baseball_core_TeamsHalf.json
+baseball_upstream_Teams.json
+
+baseball_fantasy_teams_jumbo.json
+baseball_fantasy_teams_small.json
+```
+
+The first 28 files have the same number of rows as their corresponding Seah Lahman Baseball Databank
+CSV files.
+
+The last two files (the baseball_fantasy_teams files), however, will be generated
+with the number of rows you specify in the generate scripts.  This allows you
+to create data as large as you need for migration testing.
+
 ### Generate the mongoimport scripts
 
 This will generate PowerShell or Bash scripts which execute the **mongoimport**
@@ -136,7 +181,6 @@ $ ./generate-mongoimport-scripts.sh
 You may have to modify the **generate-mongoimport-scripts** and/or the
 **templates/mongoimport.txt** so that the mongoimport program can connect
 to your database.
-
 
 ---
 
