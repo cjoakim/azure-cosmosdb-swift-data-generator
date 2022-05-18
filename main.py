@@ -244,6 +244,29 @@ def generate_mongoimport_scripts(uri, db, ssl_flag, script_type):
 
         FS.write(script_file, s)
 
+def explore_storage():
+    # this method is for the ad-hoc development of the Azure Storage functionality
+    print('explore_storage')
+    stor = Storage()
+
+    acct_info = stor.account_info()
+    print('---')
+    print('acct_info: {}'.format(str(acct_info)))
+
+    containers = stor.list_containers()
+    print('---')
+    for c in containers:
+        print('container: {}'.format(str(c)))
+
+    blobs = stor.list_container('synapse')
+    print('---')
+    for b in blobs:
+        print('blob: {}'.format(str(b)))
+
+    print('---')
+    uploaded = stor.upload_blob('README.md', 'synapse', 'README.md')
+    print('uploaded: {}'.format(str(uploaded)))
+
 def use_ssl(flag):
     if flag == '--ssl':
         return True
@@ -276,6 +299,9 @@ if __name__ == "__main__":
         ssl_flag = sys.argv[4]     # --ssl or --nossl
         script_type = sys.argv[5]  # ps1 or sh
         generate_mongoimport_scripts(uri, db, ssl_flag, script_type)
+
+    elif func == 'explore_storage':
+        explore_storage()
 
     else:
         print_options('Error: invalid function: {}'.format(func))
