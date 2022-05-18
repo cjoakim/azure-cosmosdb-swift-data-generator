@@ -12,4 +12,6 @@
 
 python main.py generate_mongoimport_scripts mongodb://@localhost:27017 dev --nossl ps1
 
+python main.py generate_mongoimport_scripts mongodb://@localhost:27017 dev --nossl sh
+
 echo 'done'

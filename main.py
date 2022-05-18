@@ -213,11 +213,11 @@ def generate_mongoimport_scripts(uri, db, ssl_flag, script_type):
     for mongoimport_file in mongoimport_files_list:
         coll = filename_to_collection(mongoimport_file)
         if script_type == 'ps1':
-            script_file = 'mongoimport_{}.ps1'.format(coll)
+            script_file = 'mongoimport_scripts/mongoimport_{}.ps1'.format(coll)
             shebang = ''
             continuation_char = '`'
         else:
-            script_file = 'mongoimport_{}.sh'.format(coll)
+            script_file = 'mongoimport_scripts/mongoimport_{}.sh'.format(coll)
             shebang = '!/bin/bash'
             continuation_char = '\\'
 
